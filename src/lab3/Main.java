@@ -44,6 +44,13 @@ public class Main {
         System.out.println(table.get("ne znay1"));
 
         System.out.println("\n#######################");
+
+        PhoneBook phoneBook = new PhoneBook();
+        PhoneBook.Contact contact = phoneBook.new Contact("Ivan", "Ivanov", "pes@gmail.com");
+        phoneBook.addContact("1234567890", contact);
+        System.out.println(phoneBook.getContact("1234567890").toString());
+        phoneBook.removeContact("1234567890");
+        System.out.println(phoneBook.getContact("1234567890"));
     }
 
 }

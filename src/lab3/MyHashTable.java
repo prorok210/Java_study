@@ -1,9 +1,8 @@
 package lab3;
 
 import java.util.LinkedList;
-import java.util.AbstractList;
 
-public class MyHashTable extends AbstractList<Object> {
+public class MyHashTable {
     private int size = 128;
     private LinkedList<Entry>[] table;
     private int count = 0;
@@ -23,6 +22,13 @@ public class MyHashTable extends AbstractList<Object> {
         }
     }
 
+    public MyHashTable(String key, String value) {
+        table = (LinkedList<Entry>[]) new LinkedList[size];
+        for (int i = 0; i < size; i++)
+            table[i] = new LinkedList<Entry>();
+        put(key, value);
+    }
+
     public MyHashTable() {
         table = (LinkedList<Entry>[]) new LinkedList[size];
         for (int i = 0; i < size; i++)
@@ -39,24 +45,6 @@ public class MyHashTable extends AbstractList<Object> {
         return Math.abs(hash) % size;
     }
 
-    @Override
-    public Object get(int index) {
-       return table[index];
-    }
-
-    public String get(String key) {
-        if (key == null)
-            return null;
-
-        int index = hash(key, size);
-        for (Entry entry : table[index]) {
-            if (entry.key.equals(key))
-                return entry.value;
-        }
-        return null;
-    }
-
-    @Override
     public int size() {
         return size;
     }
@@ -68,7 +56,7 @@ public class MyHashTable extends AbstractList<Object> {
         this.size = size;
         if (table.length < size) 
             resize(size);
-    }
+    }    
 
     private void resize(int newSize) {
         LinkedList<Entry>[] oldTable = table;
@@ -83,6 +71,19 @@ public class MyHashTable extends AbstractList<Object> {
             }
         }
         setSize(newSize);
+    }
+
+
+    public String get(String key) {
+        if (key == null)
+            return null;
+
+        int index = hash(key, size);
+        for (Entry entry : table[index]) {
+            if (entry.key.equals(key))
+                return entry.value;
+        }
+        return null;
     }
 
     public int getCount() {
