@@ -99,6 +99,12 @@ public class MyHashTable {
             resize(size * 2);
 
         int index = hash(key, size);
+        for (Entry entry : table[index]) {
+            if (entry.key.equals(key)) {
+                entry.value = value;
+                return;
+            }
+        }
         table[index].addLast(new Entry(key, value));        
     }
 
