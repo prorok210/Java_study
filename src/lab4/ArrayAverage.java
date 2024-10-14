@@ -10,8 +10,6 @@ public class ArrayAverage {
             System.out.println("Error: " + e1.getMessage());
         } catch (IndexOutOfBoundsException e2) {
             System.out.println("Error: " + e2.getMessage());
-        } catch (NullPointerException e4) {
-            System.out.println("Error: Array is null");
         }
     }
     
