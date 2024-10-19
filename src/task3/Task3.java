@@ -94,7 +94,6 @@ public class Task3 {
         }
         @Override
         public String toString() {
-            // TODO Auto-generated method stub
             return super.toString();
         }
     }
@@ -120,17 +119,13 @@ public class Task3 {
         int[] arr = new int[10];
         int sum = 0;
         for (int i = 1; tmp > 0; i++) {
-            System.out.println(tmp);
             arr[i] = (tmp % 10);
-            System.out.println(tmp);
-            System.out.println(arr[i]);
             tmp /= 10;
         }
 
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
         }
-        System.out.println(sum);
         if (sum % 2 == 0 && number % 2 == 0) {
             return true;
         } else if (sum % 2 != 0 && number % 2 != 0) {
