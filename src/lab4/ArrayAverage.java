@@ -2,8 +2,7 @@ package lab4;
 
 public class ArrayAverage {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5};
-        arr = null;
+        int[] arr = {};
         try {
             System.out.println(average(arr));
         } catch (IllegalArgumentException e1) {
@@ -16,6 +15,9 @@ public class ArrayAverage {
     public static double average(int[] arr) {
         if (arr == null) {
             throw new IllegalArgumentException("Array cannot be null");
+        }
+        if (arr.length == 0) {
+            throw new IllegalArgumentException("Array cannot be empty");
         }
         int sum = 0;
         for (int i = 0; i < arr.length ; i++) {
