@@ -8,7 +8,7 @@ public class FindWords {
         String[] testCases = {"Hello, my name is John", "I am a student", "Необходимо написать программу", "При этом программа должна использовать регулярные выражения", "", null};
         for (String text : testCases) {
             try {
-                System.out.println(findWords(text, 'a'));
+                System.out.println(findWords(text, 'н'));
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
             }
@@ -21,7 +21,7 @@ public class FindWords {
             throw new IllegalArgumentException("Null pointer exception");
         }
         if (!Character.isLetter(letter)) {
-            throw new IllegalArgumentException("Illegal letter format");
+            return "Illegal letter format";
         }
 
         String formatedText = text.toLowerCase();
