@@ -2,20 +2,39 @@ package lab5;
 
 public class CheckPassword {
     public static void main(String[] args) {
-        String[] testCases = {"qwerty123", "Qwe123", "QWEwertydasd", "qwerty123", "Qwerty123", "Qwerty123!", "dsassDSAd3123123131231231", null};
+        String[] testCases = {"123" , "qwerty123", "Qwe123", "QWEwertydasd", "qwerty123", "Qwerty123", "Qwerty123!", "dsassDSAd3123123131231231"};
         for (String password : testCases) {
-            try {
-                System.out.println(checkPassword(password));
-            } catch (IllegalArgumentException e) {
-                System.out.println("Error: " + e.getMessage());
-            }
+            System.out.println(checkPassword(password));
         }
     }
 
     public static boolean checkPassword(String password) {
-        if (password == null) {
-            throw new IllegalArgumentException("Null pointer exception");
+        boolean hasUpperCase = password.matches(".*[A-Z].*");
+        boolean hasDigit = password.matches(".*\\d.*");
+        boolean hasValidLength = password.length() >= 8 && password.length() <= 16;
+        boolean hasOnlyValidCharacters = password.matches("[a-zA-Z\\d]+");
+        boolean errFlag = false;
+
+        if (!hasUpperCase) {
+            System.out.println("- Пароль должен содержать хотя бы одну заглавную букву.");
+            errFlag = true;
         }
-        return password.matches("^((?=.*[A-Z])(?=.*\\d)[a-z(A-Z)\\d]{8,16})$");
+        if (!hasDigit) {
+            System.out.println("-  Пароль должен содержать хотя бы одну цифру.");
+            errFlag = true;
+        }
+        if (!hasValidLength) {
+            System.out.println("-  Длина пароля должна быть от 8 до 16 символов.");
+            errFlag = true;
+        }
+        if (!hasOnlyValidCharacters) {
+            System.out.println("-  Пароль должен содержать только латинские буквы и цифры.");
+            errFlag = true;
+        }
+
+        if (errFlag) {
+            return false;
+        }
+        return true;
     }
 }

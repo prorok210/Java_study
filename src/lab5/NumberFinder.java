@@ -11,11 +11,7 @@ public class NumberFinder {
         Matcher matcher = pattern.matcher(text);
         Matcher errMatcher = errPattern.matcher(text);
         while (errMatcher.find()) {
-            try {
-                throw new IllegalStateException("Incorrect number format:" + errMatcher.group());
-            } catch (IllegalStateException e) {
-                System.out.println("Error: " + e.getMessage());
-            }
+            System.out.println("Error: Incorrect number format " + errMatcher.group());
         }
         while (matcher.find()) {
                 System.out.println(matcher.group());

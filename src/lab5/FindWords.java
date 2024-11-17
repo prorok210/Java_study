@@ -5,21 +5,14 @@ import java.util.regex.Matcher;
 
 public class FindWords {
     public static void main(String[] args) {
-        String[] testCases = {"Hello, my name is John", "I am a student", "Необходимо написать программу", "При этом программа должна использовать регулярные выражения", "", null};
+        String[] testCases = {"Hello, my name is John", "I am a student", "Необходимо написать программу", "При этом программа должна использовать регулярные выражения", ""};
         for (String text : testCases) {
-            try {
-                System.out.println(findWords(text, 'н'));
-            } catch (IllegalArgumentException e) {
-                System.out.println("Error: " + e.getMessage());
-            }
+            System.out.println(findWords(text, 'm'));
         }
     }
 
 
     static String findWords(String text, char letter) {
-        if (text == null) {
-            throw new IllegalArgumentException("Null pointer exception");
-        }
         if (!Character.isLetter(letter)) {
             return "Illegal letter format";
         }

@@ -7,20 +7,13 @@ public class FindCaps {
     public static void main(String[] args) {
         String[] testCases = {"FgFgFgFgdasdasdasDFFDDSADDfdfdfdfDFf", "dasasdasdas", "dD", "Необходимо нАписать программу, которая будет находить все случаи в \r\n" + //
                         "тексте, когда сразу после строчной буквы идет заглавная, без какого-либо \r\n" + //
-                        "символа между ними, и выдЕлять их знаками ! с двух сторон. ", null};
+                        "символа между ними, и выдЕлять их знаками ! с двух сторон. "};
         for (String text : testCases) {
-            try {
                 System.out.println(findAndMarkCaps(text));
-            } catch (IllegalArgumentException e) {
-                System.out.println("Error: " + e.getMessage());
-            }
         }
     }
 
     public static String findAndMarkCaps(String text) {
-        if (text == null) {
-            throw new IllegalArgumentException("Null pointer exception");
-        }
 
         Pattern pattern = Pattern.compile("([a-zа-я])([A-ZА-Я])");
         Matcher matcher = pattern.matcher(text);
